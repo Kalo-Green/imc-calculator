@@ -46,11 +46,6 @@ button {
     font-weight: bold;
 }
 
-.subtitle {
-    opacity: 0.7;
-    margin-bottom: 1rem;
-}
-
 /* ----------------------------------------- */
 /* GAUGE */
 /* ----------------------------------------- */
@@ -66,7 +61,7 @@ button {
     overflow: hidden;
 }
 
-/* Répartition égale des segments du gauge */
+/* Répartition égale des segments de la jauge */
 .zone {
     flex: 1;
 }
@@ -102,7 +97,7 @@ button {
 }
 
 /* ----------------------------------------- */
-/* ZONE INFO IMC */
+/* RESULT SECTION  */
 /* ----------------------------------------- */
 .info-box {
     margin-top: 1rem;
@@ -117,4 +112,59 @@ button {
 
 #categoryText {
     margin-top: 0.3rem;
+}
+
+/* ----------------------------------------- */
+/* TABLE OMS  */
+/* ----------------------------------------- */
+.table-oms {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.table-oms h2 {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* TABLE STRUCTURE */
+.table-oms table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.table-oms td {
+    padding: 0.25rem 0;
+}
+
+.table-oms td:first-child {
+    font-weight: 600;
+}
+
+.blue-text {
+    color: #3b82f6;
+}
+
+.green-text {
+    color: #22c55e;
+}
+
+.yellow-text {
+    color: #eab308;
+}
+
+.orange-text {
+    color: #f59e0b;
+}
+
+.red-text {
+    color: #ef4444;
+}
+
+.darkred-text {
+    color: #b91c1c;
 }

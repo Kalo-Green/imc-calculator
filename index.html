@@ -12,7 +12,6 @@
     <div class="app">
         <div class="card">
             <h1>Calculateur IMC</h1>
-            <p class="subtitle">Classification OMS</p>
 
             <input id="poids" type="number" placeholder="Poids (kg)">
             <input id="taille" type="number" placeholder="Taille (cm)">
@@ -33,11 +32,52 @@
                 <div id="indicator" class="indicator"></div>
             </div>
 
-            <!-- ZONE INFO IMC -->
+            <!-- RESULT SECTION -->
             <div class="info-box">
                 <div id="imcText"></div>
                 <div id="categoryText"></div>
             </div>
+
+            <div class="table-oms">
+
+                <h2>Catégories IMC selon l’OMS</h2>
+
+                <table>
+
+                    <tr class="blue-text">
+                        <td>Maigreur</td>
+                        <td>IMC &lt; 18.5</td>
+                    </tr>
+
+                    <tr class="green-text">
+                        <td>Poids normal</td>
+                        <td>18.5 – 24.9</td>
+                    </tr>
+
+                    <tr class="yellow-text">
+                        <td>Surpoids</td>
+                        <td>25 – 29.9</td>
+                    </tr>
+
+                    <tr class="orange-text">
+                        <td>Obésité modérée</td>
+                        <td>30 – 34.9</td>
+                    </tr>
+
+                    <tr class="red-text">
+                        <td>Obésité sévère</td>
+                        <td>35 – 39.9</td>
+                    </tr>
+
+                    <tr class="darkred-text">
+                        <td>Obésité importante</td>
+                        <td>≥ 40</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
         </div>
     </div>
 

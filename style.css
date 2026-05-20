@@ -100,3 +100,21 @@ button {
     background: white;
     transition: left 0.4s ease;
 }
+
+/* ----------------------------------------- */
+/* ZONE INFO IMC */
+/* ----------------------------------------- */
+.info-box {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#imcText {
+    font-weight: bold;
+}
+
+#categoryText {
+    margin-top: 0.3rem;
+}

@@ -2,7 +2,7 @@ function calculerIMC() {
 
     const poids = parseFloat(document.getElementById("poids").value);
     const tailleCm = parseFloat(document.getElementById("taille").value);
-
+    
     // Vérification des données : doit être un nombre et positif
     if (isNaN(poids) || isNaN(tailleCm) || poids <= 0 || tailleCm <= 0) {
         document.getElementById("result").textContent = "⚠️ Données invalides";
@@ -18,9 +18,50 @@ function calculerIMC() {
     // Met à jour la jauge en fonction de l'IMC
     updateGauge(imc);
 
+    // Détermine la catégorie IMC et la couleur associée
+    let category = "";
+    let percent = 0;
+    let color = "";
+
+    if (imc < 18.5) {
+        category = "Maigreur";
+        percent = 10;
+        color = "#3b82f6";
+    } else if (imc < 25) {
+        category = "Poids normal";
+        percent = 30;
+        color = "#22c55e";
+    } else if (imc < 30) {
+        category = "Surpoids";
+        percent = 50;
+        color = "#eab308";
+    } else if (imc < 35) {
+        category = "Obésité modérée";
+        percent = 70;
+        color = "#f59e0b";
+    } else if (imc < 40) {
+        label = "Obésité sévère";
+        percent = 85;
+        color = "#ef4444";
+    } else {
+        category = "Obésité importante";
+        percent = 95;
+        color = "#b91c1c";
+    }
+
+    // Affiche l'IMC, la catégorie et applique la couleur correspondante
+    document.getElementById("imcText").textContent =
+        `Votre IMC est de ${imc.toFixed(1)}`;
+
+    document.getElementById("categoryText").textContent =
+        `Catégorie : ${category}`;
+
+    document.getElementById("imcText").style.color = color;
+    document.getElementById("categoryText").style.color = color;
+
 }
 
-// Gestion de la jauge IMC 
+/* Mise à jour de la position de la jauge selon l’IMC */
 function updateGauge(imc) {
 
     const indicator = document.getElementById("indicator");

@@ -1,8 +1,14 @@
+const IMC_MIN_MAIGREUR = 18.5;
+const IMC_MAX_NORMAL = 25;
+const IMC_MAX_SURPOIDS = 30;
+const IMC_MAX_OBESITE_MODEREE = 35;
+const IMC_MAX_OBESITE_SEVERE = 40;
+
 function calculerIMC() {
 
     const poids = parseFloat(document.getElementById("poids").value);
     const tailleCm = parseFloat(document.getElementById("taille").value);
-    
+
     // Vérification des données : doit être un nombre et positif
     if (isNaN(poids) || isNaN(tailleCm) || poids <= 0 || tailleCm <= 0) {
         document.getElementById("result").textContent = "⚠️ Données invalides";
@@ -12,7 +18,7 @@ function calculerIMC() {
     const taille = tailleCm / 100;
     const imc = poids / (taille * taille);
 
-    // Affiche le résultat de l'IMC 
+    // Affichage du résultat de l'IMC 
     document.getElementById("result").textContent = `IMC : ${imc.toFixed(1)}`;
 
     // Met à jour la jauge en fonction de l'IMC
@@ -40,11 +46,11 @@ function calculerIMC() {
         percent = 70;
         color = "#f59e0b";
     } else if (imc < 40) {
-        label = "Obésité sévère";
+        category = "Obésité sévère";
         percent = 85;
         color = "#ef4444";
     } else {
-        category = "Obésité importante";
+        category = "Obésité très sévère";
         percent = 95;
         color = "#b91c1c";
     }
@@ -58,28 +64,70 @@ function calculerIMC() {
 
     document.getElementById("imcText").style.color = color;
     document.getElementById("categoryText").style.color = color;
-
 }
 
-/* Mise à jour de la position de la jauge selon l’IMC */
+
+/*
+IMC → position (%) sur une jauge en 6 zones (~16.66% chacune)
+
+Dans chaque zone :
+- on calcule la progression de l’IMC dans l’intervalle :    
+(imc - min) / (max - min) → valeur entre 0 et 1
+- on convertit en % de la zone (*16.66)
+- on ajoute le décalage de la zone (0, 16.66, 33.33, 50, 66.66, 83.33)
+*/
+
 function updateGauge(imc) {
 
     const indicator = document.getElementById("indicator");
 
-    let percent = 0;
+    let percent = 100;
 
-    // Détermine la position de l'indicateur selon la catégorie IMC
-    if (imc < 18.5) percent = 10;
-    else if (imc < 25) percent = 30;
-    else if (imc < 30) percent = 50;
-    else if (imc < 35) percent = 70;
-    else if (imc < 40) percent = 85;
-    else percent = 95;
+    // Zone 1 : Maigreur (0 -> IMC_MIN_MAIGREUR)
+    if (imc < IMC_MIN_MAIGREUR) {
+        percent = (imc / IMC_MIN_MAIGREUR) * 16.66;
+    }
 
-    // Déplace l'indicateur sur la jauge
+    // Zone 2 : Poids normal (IMC_MIN_MAIGREUR -> IMC_MAX_NORMAL)
+    else if (imc < IMC_MAX_NORMAL) {
+        percent = 16.66 +
+            ((imc - IMC_MIN_MAIGREUR) / (IMC_MAX_NORMAL - IMC_MIN_MAIGREUR)) * 16.66;
+    }
+
+    // Zone 3 : Surpoids (IMC_MAX_NORMAL -> IMC_MAX_SURPOIDS)
+    else if (imc < IMC_MAX_SURPOIDS) {
+        percent = 33.33 +
+            ((imc - IMC_MAX_NORMAL) / (IMC_MAX_SURPOIDS - IMC_MAX_NORMAL)) * 16.66;
+    }
+
+    // Zone 4 : Obésité modérée (IMC_MAX_SURPOIDS -> IMC_MAX_OBESITE_MODEREE)
+    else if (imc < IMC_MAX_OBESITE_MODEREE) {
+        percent = 50 +
+            ((imc - IMC_MAX_SURPOIDS) / (IMC_MAX_OBESITE_MODEREE - IMC_MAX_SURPOIDS)) * 16.66;
+    }
+
+    // Zone 5 : Obésité sévère (IMC_MAX_OBESITE_MODEREE -> IMC_MAX_OBESITE_SEVERE)
+    else if (imc < IMC_MAX_OBESITE_SEVERE) {
+        percent = 66.66 +
+            ((imc - IMC_MAX_OBESITE_MODEREE) / (IMC_MAX_OBESITE_SEVERE - IMC_MAX_OBESITE_MODEREE)) * 16.66;
+    }
+
+    // Zone 6 : Obésité très sévère (> IMC_MAX_OBESITE_SEVERE)
+    else {
+        // Progression au-delà de la dernière zone
+        const progress = (imc - IMC_MAX_OBESITE_SEVERE) / 10;
+
+        percent = 83.33 + progress * 16.66;
+
+        // Limite maximale à 100%
+        if (percent > 100) {
+            percent = 100;
+        }
+    }
+
+    // Déplace l’indicateur sur la jauge selon le pourcentage calculé
     indicator.style.left = percent + "%";
 }
-
 
 // Lance le calcul au clic sur le bouton
 document.getElementById("btnCalcul").addEventListener("click", calculerIMC);

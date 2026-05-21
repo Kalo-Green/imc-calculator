@@ -86,6 +86,10 @@ button {
     background: #ef4444;
 }
 
+.darkred {
+    background: #b91c1c;
+}
+
 #indicator {
     position: absolute;
     top: -0.3rem;

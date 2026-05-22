@@ -15,8 +15,18 @@ body {
     color: white;
 }
 
+.app {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ----------------------------------------- */
+/* CARD */
+/* ----------------------------------------- */
 .card {
-    width: 28rem;
+    width: 100%;
+    max-width: 28rem;
     padding: 1.5rem;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.08);
@@ -27,6 +37,9 @@ h1 {
     margin-bottom: 1.4rem;
 }
 
+/* ----------------------------------------- */
+/* FORM */
+/* ----------------------------------------- */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -44,6 +57,13 @@ h1 {
     border: none;
 }
 
+.form-group input:focus {
+    outline: 2px solid #22c55e;
+}
+
+/* ----------------------------------------- */
+/* BUTTON */
+/* ----------------------------------------- */
 button {
     width: 100%;
     padding: 0.6rem;
@@ -54,6 +74,11 @@ button {
     cursor: pointer;
     font-weight: 600;
     font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 /* ----------------------------------------- */
@@ -76,6 +101,7 @@ button {
     flex: 1;
 }
 
+/* BACKGROUND COLORS */
 .blue {
     background: #3b82f6;
 }
@@ -111,7 +137,7 @@ button {
 }
 
 /* ----------------------------------------- */
-/* RESULT SECTION  */
+/* RESULT */
 /* ----------------------------------------- */
 .info-box {
     margin-top: 1rem;
@@ -129,7 +155,7 @@ button {
 }
 
 /* ----------------------------------------- */
-/* TABLE OMS  */
+/* TABLE OMS */
 /* ----------------------------------------- */
 .table-oms {
     margin-top: 1rem;
@@ -159,6 +185,7 @@ button {
     font-weight: 600;
 }
 
+/* TEXT COLORS */
 .blue-text {
     color: #3b82f6;
 }
@@ -181,4 +208,25 @@ button {
 
 .darkred-text {
     color: #b91c1c;
+}
+
+/* ----------------------------------------- */
+/* RESPONSIVE DESIGN */
+/* ----------------------------------------- */
+/* Styles for screens 480px and smaller */
+@media (max-width: 480px) {
+
+    body {
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .form-group input {
+        padding: 0.5rem;
+    }
+
 }

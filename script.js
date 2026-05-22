@@ -14,9 +14,12 @@ function calculerIMC() {
 
     // Vérification des données : doit être un nombre et positif
     if (isNaN(poids) || isNaN(tailleCm) || poids <= 0 || tailleCm <= 0) {
-        document.getElementById("result").textContent = "⚠️ Données invalides";
+        document.getElementById("error-message").textContent = "⚠️ Données invalides";
         return;
     }
+
+    // Supprime le message d'erreur si les données sont valides
+    document.getElementById("error-message").textContent = "";
 
     const taille = tailleCm / 100;
     const imc = poids / (taille * taille);

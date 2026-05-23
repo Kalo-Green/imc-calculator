@@ -14,67 +14,67 @@
             <h1>Calculateur IMC</h1>
 
             <div class="form-group">
-                <label for="poids">Poids (kg)</label>
-                <input id="poids" type="number" placeholder="Ex : 70">
+                <label for="weight">Poids (kg)</label>
+                <input id="weight" type="number" placeholder="Ex : 70">
             </div>
 
             <div class="form-group">
-                <label for="taille">Taille (cm)</label>
-                <input id="taille" type="number" placeholder="Ex : 175">
+                <label for="height">Taille (cm)</label>
+                <input id="height" type="number" placeholder="Ex : 175">
             </div>
 
             <!-- <button type="button" onclick="calculerIMC()">Calculer</button> -->
-            <button id="btnCalcul">Calculer</button>
+            <button id="calculate-btn">Calculer</button>
             <div id="error-message" class="error-message"></div>
 
             <!-- GAUGE -->
             <div class="gauge">
                 <div class="bar">
-                    <div class="zone blue"></div>
-                    <div class="zone green"></div>
-                    <div class="zone yellow"></div>
-                    <div class="zone orange"></div>
-                    <div class="zone red"></div>
-                    <div class="zone darkred"></div>
+                    <div class="zone bg-blue"></div>
+                    <div class="zone bg-green"></div>
+                    <div class="zone bg-yellow"></div>
+                    <div class="zone bg-orange"></div>
+                    <div class="zone bg-red"></div>
+                    <div class="zone bg-darkred"></div>
                 </div>
                 <div id="indicator" class="indicator"></div>
             </div>
 
-            <!-- RESULT SECTION -->
-            <div class="info-box">
-                <div id="imcText"></div>
-                <div id="categoryText"></div>
+            <!-- BMI RESULT -->
+            <div class="result-box">
+                <div id="bmi-result"></div>
+                <div id="category-result"></div>
             </div>
 
             <div class="table-oms">
                 <h2>Catégories IMC selon l’OMS</h2>
                 <table>
-                    <tr class="blue-text">
+                    <tr class="text-blue">
                         <td>Maigreur</td>
                         <td>IMC &lt; 18.5</td>
                     </tr>
 
-                    <tr class="green-text">
+                    <tr class="text-green">
                         <td>Poids normal</td>
                         <td>18.5 – 24.9</td>
                     </tr>
 
-                    <tr class="yellow-text">
+                    <tr class="text-yellow">
                         <td>Surpoids</td>
                         <td>25 – 29.9</td>
                     </tr>
 
-                    <tr class="orange-text">
+                    <tr class="text-orange">
                         <td>Obésité modérée</td>
                         <td>30 – 34.9</td>
                     </tr>
 
-                    <tr class="red-text">
+                    <tr class="text-red">
                         <td>Obésité sévère</td>
                         <td>35 – 39.9</td>
                     </tr>
 
-                    <tr class="darkred-text">
+                    <tr class="text-darkred">
                         <td>Obésité très sévère</td>
                         <td>≥ 40</td>
                     </tr>
